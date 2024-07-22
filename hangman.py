@@ -12,7 +12,10 @@ def game():
         guessed0.append(0)
     
     i = 0
-    print(guess)
+    tries = len(guess) -2
+    print(guess, "Is the word")
+    print(f"You have {tries} tries to guess the word!")
+    print("Type \"exit\" to exit the game")
     while i < len(word)-1:
         if word == guessed0:
             return print(("Words guessed you win!"))
@@ -20,14 +23,15 @@ def game():
         if input_word == "exit":
             return print("Exitting the game")
         if input_word in guess and input_word not in word:
-            print("Words already guessed, Guess another!", str(guess), str(word))
+            print("Words already guessed, Guess another!", (guess), tries, "Tries left")
         elif input_word in word:
             pos = word.index(input_word)
             guess[pos] = input_word
             word[pos] = 0
-            print(str(guess))
+            print(str(guess), tries, "Tries left")
         else:
-            print("Does not include that word, Try again!", (guess))
+            print("Does not include that word, Try again!", (guess), tries, "Tries left")
+            tries = tries - 1
             i = i + 1
 
 
